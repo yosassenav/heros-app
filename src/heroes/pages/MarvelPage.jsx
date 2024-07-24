@@ -1,6 +1,6 @@
-import { HeroesList } from "../components/"
+import { HeroesList } from "../components"
 
-export const Marvel = () => {
+export const MarvelPage = () => {
     return (
         <>
             <h1>Marvel</h1>

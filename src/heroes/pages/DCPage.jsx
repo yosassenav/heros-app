@@ -1,6 +1,6 @@
-import { HeroesList } from "../components/"
+import { HeroesList } from "../components"
 
-export const DC = () => {
+export const DCPage = () => {
     return (
         <>
             <h1>DC</h1>
