@@ -11,14 +11,14 @@ export const HeroPage = () => {
     const hero = useMemo(() => getHeroById( id ), [id]); 
 
     const onNavigateBack = () => {
-        navigate('/marvel',{
+        navigate('/MarvelPage',{
             replace: true
         })
     }
 
 
     if ( !hero ) {
-        return <Navigate to={"/marvel"}/>
+        return <Navigate to={"/MarvelPage"}/>
     }
 
     
