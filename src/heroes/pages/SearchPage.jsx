@@ -1,10 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm"
 import { HeroCard } from "../components"
+import queryString from "query-string";
 
 export const SearchPage = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const {q = ''} = queryString.parse(location.search)
 
     const {searchText, onInputChange} = useForm({
         searchText: '',
@@ -16,8 +20,6 @@ export const SearchPage = () => {
         if(searchText.trim().length <= 1) return;
         navigate(`?q=${ searchText }`);
 
-
-        console.log({searchText})
     }
 
     return (
@@ -49,7 +51,7 @@ export const SearchPage = () => {
                     Search a hero
                 </div>
                 <div className="alert alert-danger">
-                    Hero not found!
+                    No hero with <b>{q}</b>
                 </div>
 
                 <HeroCard/>
