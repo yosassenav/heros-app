@@ -1,18 +1,34 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
-
 import { useForm } from "../../hooks/useForm"
 import { HeroCard } from "../components"
 import { getHeroesByName } from "../helpers";
+import { useEffect, useState } from "react";
 
 export const SearchPage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const {query = ''} = queryString.parse(location.search);
+    // Parse the query string from the URL
+    const {q = ''} = queryString.parse(location.search);
 
-    const heroList =  getHeroesByName( query );
+    // Use state to keep track of the query
+    const [query, setQuery] = useState(q);
+
+    const [heroes, setHeroes] = useState( [] );
+
+    // Update heroes list whenever the query changes
+    useEffect(()=>{
+        setHeroes( getHeroesByName(query) );
+
+    },[query])
+    
+
+    // Update query state when location changes
+    useEffect(()=>{
+        setQuery(q);
+    },[location.search]);
 
 
     const {searchText, onInputChange} = useForm({
@@ -23,7 +39,7 @@ export const SearchPage = () => {
         event.preventDefault();
 
         if(searchText.trim().length <= 1) return;
-        navigate(`?q=${ searchText }`);
+        navigate(`?q=${ searchText.trim() }`);
 
     }
 
@@ -54,18 +70,19 @@ export const SearchPage = () => {
                 <h4>Results</h4>
                 <hr/>
 
-                <div className="alert alert-primary">
-                    Search a hero
-                </div>
-                <div className="alert alert-danger">
-                    No hero with <b>{query}</b>
-                </div>
-
-                {
-                    heroList.map((hero)=>(
-                        <HeroCard key={hero.id} {...hero} />
-                    ))
-                }
+                {query.trim().length === 0 && (
+                    <div className="alert alert-primary">
+                        Search a hero
+                    </div>
+                )}
+                {query.trim().length > 0 && heroes.length === 0 && (
+                    <div className="alert alert-danger">
+                        No hero with <b>{query}</b>
+                    </div>
+                )}
+                {heroes.map((hero) => (
+                    <HeroCard key={hero.id} {...hero} />
+                ))}
 
             </div>
         </div>
