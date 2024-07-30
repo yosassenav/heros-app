@@ -10,13 +10,14 @@ export const LoginPage = () => {
 
     const onLogin = ()=>{
 
-        login('Vanessa');
+        login('Vanessa');  //This functions comes from the AuthProvider component
 
         navigate('/home', 
             {
                 replace: true
             })
     }
+
     return (
         <div className="container mt-5">
             <h1>Login</h1>
