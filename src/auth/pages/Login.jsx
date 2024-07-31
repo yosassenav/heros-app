@@ -10,9 +10,11 @@ export const LoginPage = () => {
 
     const onLogin = ()=>{
 
+        const lastPath = localStorage.getItem('lastPath') || '/';
+
         login('Vanessa');  //This functions comes from the AuthProvider component
 
-        navigate('/home', 
+        navigate('/lastPath', 
             {
                 replace: true
             })
