@@ -14,7 +14,7 @@ export const LoginPage = () => {
 
         login('Vanessa');  //This functions comes from the AuthProvider component
 
-        navigate('/lastPath', 
+        navigate(lastPath, 
             {
                 replace: true
             })
