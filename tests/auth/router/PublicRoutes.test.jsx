@@ -6,10 +6,10 @@ import { MemoryRouter, Routes, Route } from "react-router-dom";
 
 describe('Pruebas en <PublicRoutes/>', () => { 
 
-    test('debe mostrar el children si no esta autenticado',()=>{
+    test('debe mostrar el children (rutas públicas) si no esta autenticado',()=>{
 
         const contextValue = {
-            logged: false,
+            isLogged: false,
         }
 
         render(
@@ -24,10 +24,10 @@ describe('Pruebas en <PublicRoutes/>', () => {
     })
 
 
-    test('debe navegar si esta autenticado',()=>{
+    test('debe navegar a /MarvelPage si esta autenticado',()=>{
 
         const contextValue = {
-            logged: true,
+            isLogged: true,
             user: {
                 name: 'Juan',
                 id: 'VH1209'
@@ -50,7 +50,10 @@ describe('Pruebas en <PublicRoutes/>', () => {
             </AuthContext.Provider>
         );
 
-        expect(screen.getByText('login')).toBeTruthy();
+        expect(screen.getByText('Pagina Marvel')).toBeTruthy();
+
+        // const loginText = screen.getByText((content)=>content.includes('login'));
+        // expect(loginText).toBeTruthy();
     })
 
 
