@@ -52,8 +52,6 @@ describe('Pruebas en <PublicRoutes/>', () => {
 
         expect(screen.getByText('Pagina Marvel')).toBeTruthy();
 
-        // const loginText = screen.getByText((content)=>content.includes('login'));
-        // expect(loginText).toBeTruthy();
     })
 
 
