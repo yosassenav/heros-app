@@ -6,8 +6,6 @@ export const PublicRoutes = ({ children }) => {
 
     const { isLogged } = useContext(AuthContext);
 
-    console.log("Publ isLogged: ",!isLogged)
-
     return (!isLogged) ? children : <Navigate to='/MarvelPage'/>
 
 }

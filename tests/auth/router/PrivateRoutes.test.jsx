@@ -3,7 +3,8 @@ import { AuthContext } from "../../../src/auth/context/AuthContext";
 import { PrivateRoutes } from "../../../src/router/PrivateRoutes";
 import { render, screen } from "@testing-library/react";
 
-describe('Pruebas en <PrivateRoutes',()=>{
+describe('Pruebas en <PrivateRoutes/>',()=>{
+    
     test('debe mostrar el children si esta autenticado',()=>{
 
         Storage.prototype.setItem = jest.fn();
@@ -27,6 +28,6 @@ describe('Pruebas en <PrivateRoutes',()=>{
         );
 
         expect(screen.getByText('Rutas privadas')).toBeTruthy();
-        expect(localStorage.setItem).toHaveBeenNthCalledWith("lastPath", "/MarvelPage");
+        expect(localStorage.setItem).toHaveBeenCalledWith('lastPath','/MarvelPage');
     })
 })

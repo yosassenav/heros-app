@@ -12,7 +12,5 @@ export const PrivateRoutes = ({ children }) => {
 
     localStorage.setItem('lastPath',lastPath);
 
-    console.log("Priv isLogged: ",isLogged)
-
   return (isLogged) ? children : <Navigate to='/login'/>
 }
