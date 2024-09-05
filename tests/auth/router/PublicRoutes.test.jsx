@@ -1,3 +1,9 @@
+
+/**
+ * @jest-environment jsdom
+ */
+
+import React from "react";
 import { render, screen } from "@testing-library/react"
 import { PublicRoutes } from "../../../src/router/PublicRoutes"
 import { AuthContext } from "../../../src/auth/context/AuthContext";
