@@ -1,13 +1,29 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { AuthContext } from "../../../src/auth/context/AuthContext";
 import { PrivateRoutes } from "../../../src/router/PrivateRoutes";
 import { render, screen } from "@testing-library/react";
 
 describe('Pruebas en <PrivateRoutes/>',()=>{
+
+    beforeEach(() => {
+        // Mock localStorage methods before each test
+        Object.defineProperty(global, 'localStorage', {
+          value: {
+            getItem: jest.fn(),
+            setItem: jest.fn(),
+            removeItem: jest.fn(),
+            clear: jest.fn(),
+          },
+          writable: true,
+        });
+      });
     
     test('debe mostrar el children si esta autenticado',()=>{
-
-        Storage.prototype.setItem = jest.fn();
 
         const contextValue = {
             isLogged: true,
