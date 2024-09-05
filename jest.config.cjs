@@ -1,9 +1,11 @@
+// REACT course suggested config
 // module.exports = {
-//     testEnvironment: 'jest-environment-jsdom node',
+//     testEnvironment: 'jest-environment-jsdom',
 //     // setupFiles: ['./jest.setup.js']
 // }
+
+// JEST documentation suggested config
 /** @type {import('jest').Config} */
-/** @jest-environment jsdom */
 
 const config = {
     verbose: true,
