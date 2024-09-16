@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import queryString from "query-string";
 import { useForm } from "../../hooks/useForm"
 import { HeroCard } from "../components"
 import { getHeroesByName } from "../helpers";
@@ -11,7 +10,9 @@ export const SearchPage = () => {
     const location = useLocation();
 
     // Parse the query string from the URL
-    const {q = ''} = queryString.parse(location.search);
+    const searchParams = new URLSearchParams(location.search);
+
+    const q = searchParams.get('q') || '';
 
     // Use state to keep track of the query
     const [query, setQuery] = useState(q);
@@ -39,6 +40,8 @@ export const SearchPage = () => {
         event.preventDefault();
 
         if(searchText.trim().length <= 1) return;
+
+        // Set the query parameter using URLSearchParams
         navigate(`?q=${ searchText.trim() }`);
 
     }
