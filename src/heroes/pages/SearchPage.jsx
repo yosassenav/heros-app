@@ -1,3 +1,4 @@
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm"
 import { HeroCard } from "../components"
@@ -53,7 +54,7 @@ export const SearchPage = () => {
 
         <div className="row">
             <div className="col-5">
-                <form onSubmit={ onSearchSubmit }>
+                <form onSubmit={ onSearchSubmit } aria-label="form">
                     <input type="text"
                     className="form-control"
                     placeholder="Search a hero"
